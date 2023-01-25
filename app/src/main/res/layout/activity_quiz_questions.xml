@@ -123,6 +123,17 @@ android:layout_marginTop="16dp"
             android:textSize="18sp"
             tools:text="Nokia"/>
 
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:layout_margin="10dp"
+            android:background="@color/design_default_color_primary"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
 
 
 
