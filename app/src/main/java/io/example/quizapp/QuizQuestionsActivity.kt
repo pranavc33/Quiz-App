@@ -1,24 +1,25 @@
 package io.example.quizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.Nullable
 import androidx.core.content.ContextCompat
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
-    private var question: Question? = null
+   private var question: Question? = null
+
 
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
+    private var mUserName : String? =  null
+    private var mCorrectAnswers: Int = 0
 
     private var progressBar: ProgressBar? = null
     private var tvProgress: TextView? = null
@@ -36,6 +37,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
 
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
+
         progressBar = findViewById(R.id.progressBar)
         tvProgress = findViewById(R.id.tv_progress)
         tvQuestion = findViewById(R.id.tv_question)
@@ -45,17 +49,6 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         tvOptionThree = findViewById(R.id.tv_option_three)
         tvOptionFour = findViewById(R.id.tv_option_four)
         btnSubmit = findViewById(R.id.btn_submit)
-
-
-        tvOptionOne?.setOnClickListener(this)
-        tvOptionTwo?.setOnClickListener(this)
-        tvOptionThree?.setOnClickListener(this)
-        tvOptionFour?.setOnClickListener(this)
-        btnSubmit?.setOnClickListener(this)
-
-
-
-
         mQuestionsList = Constants.getQuestions()
 
 
@@ -65,9 +58,17 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         setQuestion()
 
 
+        tvOptionOne?.setOnClickListener(this)
+        tvOptionTwo?.setOnClickListener(this)
+        tvOptionThree?.setOnClickListener(this)
+        tvOptionFour?.setOnClickListener(this)
+        btnSubmit?.setOnClickListener(this)
+
+
     }
 
     private fun setQuestion() {
+        defaultOptionsView()
         question = mQuestionsList!![mCurrentPosition - 1]
 
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
@@ -166,6 +167,15 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         mCurrentPosition <= mQuestionsList!!.size -> {
                             setQuestion()
                         }
+                        else->{
+                          val intent = Intent(this,ResultActivity::class.java)
+intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS,mCorrectAnswers)
+                       intent.putExtra(Constants.TOTAL_QUESTIONS,mQuestionsList?.size)
+                            startActivity(intent)
+                            finish()
+
+                        }
                     }
 
                 } else {
@@ -173,7 +183,11 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                     if (question!!.correctAnswer != mSelectedOptionPosition)
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
                 }
-                answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                else {
+                    mCorrectAnswers++
+                }
+                    //  answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                 if (mCurrentPosition == mQuestionsList!!.size) {
 
                     btnSubmit?.text = "FINISH"
