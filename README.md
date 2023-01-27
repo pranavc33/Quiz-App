@@ -2,7 +2,9 @@
 Android App built in Kotlin. The app lets the user enter a username for the game session. The user has to answer 10 questions. The app displays the user's score for the 
 session at the end. 
 
-![image](https://user-images.githubusercontent.com/101402611/215224840-eb4bcdaf-0238-4cfd-8ff9-c5f6d0c6a3a0.png)
-![image](https://user-images.githubusercontent.com/101402611/215224909-e5d611cd-e68a-4092-a980-087dfab489fe.png)
-![image](https://user-images.githubusercontent.com/101402611/215224934-3f4490cd-b524-4197-96fd-c840a621b354.png)
-![image](https://user-images.githubusercontent.com/101402611/215224972-d96dad07-b4f2-4c8a-8c10-4f6b76ffc011.png)
+![image](https://user-images.githubusercontent.com/101402611/215225501-4bb9b5b5-bd0a-4f7e-b139-b241782497f4.png){:height="200px" width="300px"}
+![image](https://user-images.githubusercontent.com/101402611/215225568-ae64f958-4a7f-4f04-ac8b-4a08c6e91822.png){:height="200px" width="300px"}
+![image](https://user-images.githubusercontent.com/101402611/215225598-5b9587ea-d120-4aad-8e46-f8c72fc43fa2.png){:height="200px" width="300px"}
+![image](https://user-images.githubusercontent.com/101402611/215225258-6136e362-0ad6-4f95-a6dd-ed081d011aec.png){:height="200px" width="300px"}
+
+
