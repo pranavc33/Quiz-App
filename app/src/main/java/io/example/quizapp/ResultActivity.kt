@@ -1,5 +1,6 @@
 package io.example.quizapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -21,6 +22,11 @@ class ResultActivity : AppCompatActivity() {
         val correctAnswers = intent.getIntExtra(Constants.CORRECT_ANSWERS,0 )
 
         tvScore.text = "Youe Score is $correctAnswers out of $totalQuestions"
+
+        btnFinish.setOnClickListener{
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
 
 
     }

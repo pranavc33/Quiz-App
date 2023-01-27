@@ -168,10 +168,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         }
                         else->{
-                          val intent = Intent(this,ResultActivity::class.java)
-intent.putExtra(Constants.USER_NAME, mUserName)
+                            val intent = Intent(this,ResultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
                             intent.putExtra(Constants.CORRECT_ANSWERS,mCorrectAnswers)
-                       intent.putExtra(Constants.TOTAL_QUESTIONS,mQuestionsList?.size)
+                            intent.putExtra(Constants.TOTAL_QUESTIONS,mQuestionsList?.size)
                             startActivity(intent)
                             finish()
 
@@ -180,22 +180,21 @@ intent.putExtra(Constants.USER_NAME, mUserName)
 
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition)
+                    if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    } else {
+                        mCorrectAnswers++
+                        //  answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+                    }
                 }
-
-                else {
-                    mCorrectAnswers++
-                }
-                    //  answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
                 if (mCurrentPosition == mQuestionsList!!.size) {
-
                     btnSubmit?.text = "FINISH"
                 } else {
                     btnSubmit?.text = "GO TO NEXT QUESTION"
                 }
                 mSelectedOptionPosition = 0
             }
+
 
 
         }
